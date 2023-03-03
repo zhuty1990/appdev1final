@@ -1,0 +1,28 @@
+
+<%=@test_array%>
+
+
+
+<table border ="1">
+  <th>Title</th>
+  <th>Image</th>
+  <th>Artist</th>
+  <th>Medium</th>
+  <th>Style</th>
+  <th>Year</th>
+  <th>Place of Origin</th>
+
+<% @test_array.each do |artwork| %>  
+  <tr>
+    <td><%=artwork.title%></td>
+    <td><img src = "<%=artwork.image%>"></td>
+    <td><%=artwork.artist%></td>
+    <td><%=artwork.medium%></td>
+    <td><%=artwork.style%></td>
+    <td><%=artwork.year%></td>
+    <td><%=artwork.place_of_origin%></td>
+  </tr>
+
+<%end%>
+
+</table>
