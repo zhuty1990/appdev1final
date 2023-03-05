@@ -29,9 +29,9 @@ class BookmarksController < ApplicationController
     date_display = params["year"]
     place_of_origin = params["place_of_origin"]
     copyright_notice = params["copyright_notice"]
-    the_user = User.where({:id => session[:user_id]})[0]
-    
-    if Artwork.where({:aic_id => aic_id})[0].blank?
+    the_user = User.where({ :id => session[:user_id] })[0]
+
+    if Artwork.where({ :aic_id => aic_id })[0].blank?
       the_artwork = Artwork.new
       the_artwork.title = title
       the_artwork.artist_title = artist
@@ -47,15 +47,12 @@ class BookmarksController < ApplicationController
 
       if the_artwork.valid?
         the_artwork.save
-      redirect_to("/search", { :notice => "Artwork created successfully." })
-      else
-      redirect_to("/search", { :alert => the_artwork.errors.full_messages.to_sentence })
       end
     end
-    
+
     the_bookmark = Bookmark.new
     the_bookmark.user_id = session[:user_id]
-    the_bookmark.artwork_id = Artwork.where({:aic_id => aic_id})[0].id
+    the_bookmark.artwork_id = Artwork.where({ :aic_id => aic_id })[0].id
     the_bookmark.aic_id = aic_id
 
     if the_bookmark.valid?
@@ -75,7 +72,7 @@ class BookmarksController < ApplicationController
 
     if the_bookmark.valid?
       the_bookmark.save
-      redirect_to("/bookmarks/#{the_bookmark.id}", { :notice => "Bookmark updated successfully."} )
+      redirect_to("/bookmarks/#{the_bookmark.id}", { :notice => "Bookmark updated successfully." })
     else
       redirect_to("/bookmarks/#{the_bookmark.id}", { :alert => the_bookmark.errors.full_messages.to_sentence })
     end
@@ -87,6 +84,6 @@ class BookmarksController < ApplicationController
 
     the_bookmark.destroy
 
-    redirect_to("/bookmarks", { :notice => "Bookmark deleted successfully."} )
+    redirect_to("/bookmarks", { :notice => "Bookmark deleted successfully." })
   end
 end

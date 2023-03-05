@@ -52,9 +52,21 @@
         </th>
 
         <th>
-          Artwork
+          Artwork DB id
         </th>
 
+        <th>
+          Title
+        </th>
+
+        <th>
+          Artist
+        </th>
+        
+        <th>
+          Image
+        </th>
+        
         <th>
           Created at
         </th>
@@ -81,6 +93,18 @@
           <%= a_bookmark.artwork_id %>
         </td>
 
+        <td>
+          <%= a_bookmark.artwork.title %>
+        </td>
+
+        <td>
+          <%= a_bookmark.artwork.artist_title %>
+        </td>
+
+        <td>
+          <img src ="<%= a_bookmark.artwork.image %>">
+        </td>
+        
         <td>
           <%= time_ago_in_words(a_bookmark.created_at) %> ago
         </td>
