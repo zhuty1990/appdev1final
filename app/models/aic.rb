@@ -52,7 +52,7 @@ class Aic
   end
 
   def Aic.category_search(category,input)
-    
+    input = input.to_s.strip.squeeze(" ").gsub(" ","+")
     results_limit = 40
     url = "https://api.artic.edu/api/v1/artworks/search?query[term][#{category}]=#{input}&limit=#{results_limit}&&fields=id,title,artist_title,style_title,style_id,place_of_origin,artwork_type_title,artwork_type_id,date_display,image_id"
     raw_search_data = URI.open(url).read
@@ -79,6 +79,22 @@ class Aic
     return output
   end
 
+  def Aic.getmediums
+    url = "https://api.artic.edu/api/v1/artwork-types?limit=100&fields=id,title"
+    raw_data = URI.open(url).read
+    parsed_data = JSON.parse(raw_data)["data"]
+    medium_hash = Hash.new
+    
+    parsed_data.each do |type|
+      medium = type["title"].downcase
+      medium_id = type["id"]
+      medium_hash.store(medium,medium_id)
+    end
+  
+    return medium_hash
+  end
+
+  
   def Aic.parse(data)
     artwork = Aic.new
     artwork.title = data["title"]

@@ -1,0 +1,44 @@
+<h1>Art Hole</h1>
+
+<h2>Take a dive into the world of art!</h2>
+
+<div>
+  <form action="/search">
+    <label for="search_box">What are you interested in:</label>
+    <input type="text" id="search_box" name="search_input">
+    <button>Search</button>
+  </form>
+</div>
+
+<h2>Or start with some suggested categories</h2>
+
+<dl>
+  <dt>Artist</dt>
+  <dd><a href = "/artist/Monet">Monet</a></dd>
+  <dd><a href = "/artist/Warhol">Warhol</a></dd>
+  <dd><a href = "/artist/Picasso">Picasso</a></dd>
+  <dd><a href = "/artist/Dali">Dali</a></dd>
+  <dd><a href = "/artist/Basquiat">Basquiat</a></dd>
+
+  <dt>Style</dt>
+  <dd><a href = "/style/TM-7543">Impressionism</a></dd>
+  <dd><a href = "/style/TM-5981">Modernism</a></dd>
+  <dd><a href = "/style/TM-7548">Realism</a></dd>
+  <dd><a href = "/style/TM-5979">Expressionism</a></dd>
+  <dd><a href = "/style/TM-7551">Surrealism</a></dd>
+  <dd><a href = "/style/TM-7221">Pop Art</a></dd>
+  <dd><a href = "/style/TM-7208">Minimalism</a></dd>
+
+  <dt>Medium</dt>
+  <dd><a href = "/medium/<%=@medium_hash["painting"]%>">Painting</a></dd>
+  <dd><a href = "/medium/<%=@medium_hash["sculpture"]%>">Sculpture</a></dd>
+  <dd><a href = "/medium/<%=@medium_hash["print"]%>">Print</a></dd>
+  <dd><a href = "/medium/<%=@medium_hash["photograph"]%>">Photograph</a></dd>
+  <dd><a href = "/medium/<%=@medium_hash["drawing and watercolor"]%>">Drawing and Watercolor</a></dd>
+  <dd><a href = "/medium/<%=@medium_hash["graphic design"]%>">Graphic Design</a></dd>
+  <dd><a href = "/medium/<%=@medium_hash["textile"]%>">Textile</a></dd>
+  <dd><a href = "/medium/<%=@medium_hash["ceramics"]%>">Ceramics</a></dd>
+  <dd><a href = "/medium/<%=@medium_hash["glass"]%>">Glass</a></dd>
+  
+
+</dl>

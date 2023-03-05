@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   
+  # Routes for Search functions:  
   
+  get("/", {:controller => "search", :action => "index"})
+  get("/search", {:controller => "search", :action => "search_general"})
+  get("/:category/:search_term", {:controller => "search", :action => "search_category"})
+
   # Routes for the Bookmark resource:
 
   # CREATE
@@ -46,9 +51,5 @@ Rails.application.routes.draw do
   get("/user_sign_out", { :controller => "user_authentication", :action => "destroy_cookies" })
              
   #------------------------------
-
-  get("/", {:controller => "application", :action => "test"})
-  get("/:category/:search_term", {:controller => "application", :action => "search_category"})
-
 
 end
