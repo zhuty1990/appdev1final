@@ -10,6 +10,8 @@
 #  user_id    :integer
 #
 class Bookmark < ApplicationRecord
+  validates(:aic_id, { :uniqueness => true })  
+  
   belongs_to(:artwork, {
     :class_name => "Artwork",
     :foreign_key => "artwork_id"

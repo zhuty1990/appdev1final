@@ -18,4 +18,5 @@
 #  style_id         :string
 #
 class Artwork < ApplicationRecord
+  validates(:aic_id, { :uniqueness => true })
 end

@@ -1,45 +1,55 @@
-
 <h1>You dug for <%=@search_term%> ...</h1>
 <%if @result_array == "There is nothing here ..."%>
-<h2><%=@result_array%></h2>
+  <h2><%=@result_array%></h2>
 <%else%>
-<h2>Woohoo - you uncovered some great art!</h2>
-<p><a href="">Dig deeper</a>? Or click on any of the links below to dig in a different direction ...</p>
+  <h2>Woohoo - you uncovered some great art!</h2>
+  <p><a href="">Dig deeper</a>? Or click on any of the links below to dig in a different direction ...</p>
 
-<table border ="1">
-  <th>Title</th>
-  <th>Image</th>
-  <th>Artist</th>
-  <th>Medium</th>
-  <th>Style</th>
-  <th>Year</th>
-  <th>Place of Origin</th>
-  <th></th>
+  <table border ="1">
+    <th>Title</th>
+    <th>Image</th>
+    <th>Artist</th>
+    <th>Medium</th>
+    <th>Style</th>
+    <th>Year</th>
+    <th>Place of Origin</th>
+    <th></th>
 
-<% @result_array.each do |artwork| %>  
-  <tr>
-    <td><%=artwork.title%></td>
-    <td><img src = "<%=artwork.image%>"></td>
-    <td><a href="/search/artist/<%=artwork.artist%>"><%=artwork.artist%></a></td>
-    <td><a href="/search/medium/<%=artwork.medium_id%>"><%=artwork.medium%></td>
-    <td><a href="/search/style/<%=artwork.style_id%>"><%=artwork.style%></a></td>
-    <td><a href="/search/year/<%=artwork.date_end%>"><%=artwork.date_display%></td>
-    <td><a href="/search/place_of_origin/<%=artwork.place_of_origin%>"><%=artwork.place_of_origin%></td>
-    <td>
-      <form action = "/insert_bookmark">
-      <input type="hidden" name="artist" value="<%=artwork.artist%>">
-      <input type="hidden" name="image" value="<%=artwork.image%>">
-      <input type="hidden" name="medium" value="<%=artwork.medium%>">
-      <input type="hidden" name="style" value="<%=artwork.style%>">
-      <input type="hidden" name="year" value="<%=artwork.date_display%>">
-      <input type="hidden" name="place_of_origin" value="<%=artwork.place_of_origin%>">
-      <input type="hidden" name="aic_id" value="<%=artwork.aic_id%>">
-      <button>Save this</button> 
-      </form>
-    </td>
-  </tr>
+    <% @result_array.each do |artwork| %>
+      <tr>
+        <td><%=artwork.title%></td>
+        <td><img src = "<%=artwork.image%>"></td>
+        <td><a href="/search/artist/<%=artwork.artist%>"><%=artwork.artist%></a></td>
+        <td><a href="/search/medium/<%=artwork.medium_id%>"><%=artwork.medium%></td>
+          <td><a href="/search/style/<%=artwork.style_id%>"><%=artwork.style%></a></td>
+          <td><a href="/search/year/<%=artwork.date_end%>"><%=artwork.date_display%></td>
+            <td><a href="/search/place_of_origin/<%=artwork.place_of_origin%>"><%=artwork.place_of_origin%></td>
+              <td>
+                <form action = "/insert_bookmark" method="post">
+                  <input type="hidden" name="artist" value="<%=artwork.artist%>">
+                  <input type="hidden" name="title" value="<%=artwork.title%>">
+                  <input type="hidden" name="image" value="<%=artwork.image%>">
+                  <input type="hidden" name="medium" value="<%=artwork.medium%>">
+                  <input type="hidden" name="medium_id" value="<%=artwork.medium_id%>">
+                  <input type="hidden" name="style" value="<%=artwork.style%>">
+                  <input type="hidden" name="style_id" value="<%=artwork.style_id%>">
+                  <input type="hidden" name="year" value="<%=artwork.date_display%>">
+                  <input type="hidden" name="place_of_origin" value="<%=artwork.place_of_origin%>">
+                  <input type="hidden" name="copyright_notice" value="<%=artwork.copyright_notice%>">
+                  <input type="hidden" name="aic_id" value="<%=artwork.aic_id%>">
+                  <%if session[:user_id]%>
+                    <%user=User.where({:id => session[:user_id]})[0]%>
+                    <%if user.bookmarks.where({:aic_id => artwork.aic_id})[0].present?%>
+                      <p>Already saved</p>
+                    <%else%>
+                      <button>Save this</button>
+                    <%end%>
+                  <%end%>
+                </form>
+              </td>
+            </tr>
 
-<%end%>
+          <%end%>
 
-</table>
-<%end%>
+        </table>
+      <%end%>
