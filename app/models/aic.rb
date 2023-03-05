@@ -6,7 +6,8 @@ class Aic
   attr_accessor :style_id
   attr_accessor :medium
   attr_accessor :medium_id
-  attr_accessor :year
+  attr_accessor :date_display
+  attr_accessor :date_end
   attr_accessor :place_of_origin
   attr_accessor :image
   attr_accessor :aic_id
@@ -16,9 +17,9 @@ class Aic
   
   def Aic.search(input)
     
-    search_term = input.to_s.strip.squeeze(" ").gsub(" ","+")
+    search_term = input.to_s.strip.squeeze(" ").unicode_normalize(:nfkd).gsub(" ","+").gsub(",","+")
     results_limit = 40
-    url = "https://api.artic.edu/api/v1/artworks/search?q=#{search_term}&limit=#{results_limit}&fields=id,title,artist_title,style_title,style_id,place_of_origin,artwork_type_title,artwork_type_id,date_display,image_id"  
+    url = "https://api.artic.edu/api/v1/artworks/search?q=#{search_term}&limit=#{results_limit}&fields=id,title,artist_title,style_title,style_id,place_of_origin,artwork_type_title,artwork_type_id,date_display,date_end,image_id"  
     raw_search_data = URI.open(url).read
     parsed_search_data = JSON.parse(raw_search_data)["data"]
     iiif_url = JSON.parse(raw_search_data)["config"]["iiif_url"]
@@ -52,9 +53,10 @@ class Aic
   end
 
   def Aic.category_search(category,input)
+    
     input = input.to_s.strip.squeeze(" ").gsub(" ","+")
     results_limit = 40
-    url = "https://api.artic.edu/api/v1/artworks/search?query[term][#{category}]=#{input}&limit=#{results_limit}&&fields=id,title,artist_title,style_title,style_id,place_of_origin,artwork_type_title,artwork_type_id,date_display,image_id"
+    url = "https://api.artic.edu/api/v1/artworks/search?query[term][#{category}]=#{input}&limit=#{results_limit}&fields=id,title,artist_title,style_title,style_id,place_of_origin,artwork_type_title,artwork_type_id,date_display,date_end,image_id"
     raw_search_data = URI.open(url).read
     parsed_search_data = JSON.parse(raw_search_data)["data"]
     iiif_url = JSON.parse(raw_search_data)["config"]["iiif_url"]
@@ -103,7 +105,8 @@ class Aic
     artwork.style_id = data["style_id"]
     artwork.medium = data["artwork_type_title"]
     artwork.medium_id = data["artwork_type_id"]
-    artwork.year = data["date_display"]
+    artwork.date_display = data["date_display"]
+    artwork.date_end = data["date_end"]
     artwork.place_of_origin = data["place_of_origin"]
     
     image_id = data["image_id"]
