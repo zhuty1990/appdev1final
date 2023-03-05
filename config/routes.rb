@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   get("/", {:controller => "search", :action => "index"})
   get("/search", {:controller => "search", :action => "search_general"})
-  get("/:category/:search_term", {:controller => "search", :action => "search_category"})
+  get("/search/:category/:search_term", {:controller => "search", :action => "search_category"})
 
   # Routes for the Bookmark resource:
 

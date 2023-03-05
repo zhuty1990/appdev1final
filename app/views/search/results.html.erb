@@ -14,16 +14,29 @@
   <th>Style</th>
   <th>Year</th>
   <th>Place of Origin</th>
+  <th></th>
 
 <% @result_array.each do |artwork| %>  
   <tr>
     <td><%=artwork.title%></td>
     <td><img src = "<%=artwork.image%>"></td>
-    <td><a href="/artist/<%=artwork.artist%>"><%=artwork.artist%></a></td>
-    <td><a href="/medium/<%=artwork.medium_id%>"><%=artwork.medium%></td>
-    <td><a href="/style/<%=artwork.style_id%>"><%=artwork.style%></a></td>
-    <td><a href="/year/<%=artwork.date_end%>"><%=artwork.date_display%></td>
-    <td><a href="/place_of_origin/<%=artwork.place_of_origin%>"><%=artwork.place_of_origin%></td>
+    <td><a href="/search/artist/<%=artwork.artist%>"><%=artwork.artist%></a></td>
+    <td><a href="/search/medium/<%=artwork.medium_id%>"><%=artwork.medium%></td>
+    <td><a href="/search/style/<%=artwork.style_id%>"><%=artwork.style%></a></td>
+    <td><a href="/search/year/<%=artwork.date_end%>"><%=artwork.date_display%></td>
+    <td><a href="/search/place_of_origin/<%=artwork.place_of_origin%>"><%=artwork.place_of_origin%></td>
+    <td>
+      <form action = "/insert_bookmark">
+      <input type="hidden" name="artist" value="<%=artwork.artist%>">
+      <input type="hidden" name="image" value="<%=artwork.image%>">
+      <input type="hidden" name="medium" value="<%=artwork.medium%>">
+      <input type="hidden" name="style" value="<%=artwork.style%>">
+      <input type="hidden" name="year" value="<%=artwork.date_display%>">
+      <input type="hidden" name="place_of_origin" value="<%=artwork.place_of_origin%>">
+      <input type="hidden" name="aic_id" value="<%=artwork.aic_id%>">
+      <button>Save this</button> 
+      </form>
+    </td>
   </tr>
 
 <%end%>

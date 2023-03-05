@@ -1,4 +1,6 @@
 class SearchController < ActionController::Base
+layout ("application")
+  
   def index
     @medium_hash = Aic.getmediums
     render({ :template => "/search/index.html.erb" })
@@ -30,7 +32,7 @@ class SearchController < ActionController::Base
     @result_array = Array.new
 
     if search_category == "place_of_origin" || search_category == "artist_title"
-      search_data = Aic.search(@search_term)
+      search_data = Aic.search("\"#{@search_term}\"")
     else
       search_data = Aic.category_search(search_category, @search_term)
     end

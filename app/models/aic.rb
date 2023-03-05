@@ -11,6 +11,8 @@ class Aic
   attr_accessor :place_of_origin
   attr_accessor :image
   attr_accessor :aic_id
+  attr_accessor :copyright_notice
+
 
 
   require "open-uri"
@@ -19,7 +21,7 @@ class Aic
     
     search_term = input.to_s.strip.squeeze(" ").unicode_normalize(:nfkd).gsub(" ","+").gsub(",","+")
     results_limit = 40
-    url = "https://api.artic.edu/api/v1/artworks/search?q=#{search_term}&limit=#{results_limit}&fields=id,title,artist_title,style_title,style_id,place_of_origin,artwork_type_title,artwork_type_id,date_display,date_end,image_id"  
+    url = "https://api.artic.edu/api/v1/artworks/search?q=#{search_term}&limit=#{results_limit}&[term][is_public_domain]=true&fields=id,title,artist_title,style_title,style_id,place_of_origin,artwork_type_title,artwork_type_id,date_display,date_end,image_id,copyright_notice"  
     raw_search_data = URI.open(url).read
     parsed_search_data = JSON.parse(raw_search_data)["data"]
     iiif_url = JSON.parse(raw_search_data)["config"]["iiif_url"]
@@ -56,7 +58,7 @@ class Aic
     
     input = input.to_s.strip.squeeze(" ").gsub(" ","+")
     results_limit = 40
-    url = "https://api.artic.edu/api/v1/artworks/search?query[term][#{category}]=#{input}&limit=#{results_limit}&fields=id,title,artist_title,style_title,style_id,place_of_origin,artwork_type_title,artwork_type_id,date_display,date_end,image_id"
+    url = "https://api.artic.edu/api/v1/artworks/search?query[term][#{category}]=#{input}&limit=#{results_limit}&[term][is_public_domain]=true&fields=id,title,artist_title,style_title,style_id,place_of_origin,artwork_type_title,artwork_type_id,date_display,date_end,image_id,copyright_notice"
     raw_search_data = URI.open(url).read
     parsed_search_data = JSON.parse(raw_search_data)["data"]
     iiif_url = JSON.parse(raw_search_data)["config"]["iiif_url"]
@@ -99,6 +101,7 @@ class Aic
   
   def Aic.parse(data)
     artwork = Aic.new
+    artwork.aic_id = data["id"]
     artwork.title = data["title"]
     artwork.artist = data["artist_title"]
     artwork.style = data["style_title"]
@@ -108,6 +111,7 @@ class Aic
     artwork.date_display = data["date_display"]
     artwork.date_end = data["date_end"]
     artwork.place_of_origin = data["place_of_origin"]
+    artwork.copyright_notice = data["copyright_notice"]
     
     image_id = data["image_id"]
     iiif_url = data["iiif_url"]

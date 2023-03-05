@@ -16,5 +16,5 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many(:bookmarks, { :class_name => "Bookmark", :foreign_key => "user_id" })
-  has_many(:saved_artworks, { :through => :bookmarks, :source => :artwork }
+  has_many(:saved_artworks, { :through => :bookmarks, :source => :artwork })
 end

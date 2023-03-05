@@ -16,6 +16,44 @@
   </head>
 
   <body>
+    <%if session[:user_id]%>
+      <ul>
+        <li>
+          <a href="/user_sign_out">
+            Sign out
+          </a>
+        </li>
+        <li>
+          <a href="/bookmarks">
+            My bookmarks
+          </a>
+        </li>
+        <li>
+          <a href="/">
+            Home
+          </a>
+        </li>
+      </ul>
+
+    <%else%>
+      <ul>
+        <li>
+          <a href="/user_sign_in">
+            Sign in
+          </a>
+        </li>
+        <li>
+          <a href="/user_sign_up">
+            Sign up
+          </a>
+        </li>
+        <li>
+          <a href="/">
+            Home
+          </a>
+        </li>
+      </ul>
+    <%end%>
     <%= yield %>
   </body>
 </html>

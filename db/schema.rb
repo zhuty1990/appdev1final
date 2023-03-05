@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_04_223521) do
+ActiveRecord::Schema.define(version: 2023_03_05_201319) do
 
   create_table "artworks", force: :cascade do |t|
     t.string "title"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 2023_03_04_223521) do
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "copyright_notice"
+    t.string "aic_id"
   end
 
   create_table "bookmarks", force: :cascade do |t|
@@ -31,6 +33,7 @@ ActiveRecord::Schema.define(version: 2023_03_04_223521) do
     t.integer "artwork_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "aic_id"
   end
 
   create_table "users", force: :cascade do |t|
