@@ -1,6 +1,6 @@
 class SearchController < ActionController::Base
-layout ("application")
-  
+  layout ("application")
+
   def index
     @medium_hash = Aic.getmediums
     render({ :template => "/search/index.html.erb" })
@@ -19,6 +19,14 @@ layout ("application")
         @result_array.push(data)
       end
     end
+
+    last_views_aicids = Array.new
+    @result_array.each do |artwork|
+      last_views_aicids.push(artwork.aic_id)
+    end
+
+    session[:artwork_id_1] = last_views_aicids[0]
+    session[:artwork_id_2] = last_views_aicids[1]
 
     render({ :template => "/search/results.html.erb" })
   end
@@ -46,6 +54,26 @@ layout ("application")
       end
     end
 
+    last_views_aicids = Array.new
+    @result_array.each do |artwork|
+      last_views_aicids.push(artwork.aic_id)
+    end
+
+    session[:artwork_id_1] = last_views_aicids[0]
+    session[:artwork_id_2] = last_views_aicids[1]
+
+    render({ :template => "/search/results.html.erb" })
+  end
+
+  def last_view
+    @result_array = Array.new
+    data_1 = Aic.getdatafromid(session[:artwork_id_1])
+    data_2 = Aic.getdatafromid(session[:artwork_id_2])
+    artwork_1 = Aic.parse(data_1)
+    artwork_2 = Aic.parse(data_2)
+
+    @result_array.push(artwork_1, artwork_2)
+    
     render({ :template => "/search/results.html.erb" })
   end
 end

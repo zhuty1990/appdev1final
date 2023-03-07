@@ -44,35 +44,19 @@
     <table border="1">
       <tr>
         <th>
-          ID
-        </th>
-
-        <th>
-          User
-        </th>
-
-        <th>
-          Artwork DB id
-        </th>
-
-        <th>
           Title
         </th>
 
         <th>
           Artist
         </th>
-        
+
         <th>
           Image
         </th>
-        
-        <th>
-          Created at
-        </th>
 
         <th>
-          Updated at
+          Created at
         </th>
 
         <th>
@@ -80,44 +64,30 @@
       </tr>
 
       <% @list_of_bookmarks.each do |a_bookmark| %>
-      <tr>
-        <td>
-          <%= a_bookmark.id %>
-        </td>
+        <tr>
 
-        <td>
-          <%= a_bookmark.user_id %>
-        </td>
+          <td>
+            <%= a_bookmark.artwork.title %>
+          </td>
 
-        <td>
-          <%= a_bookmark.artwork_id %>
-        </td>
+          <td>
+            <%= a_bookmark.artwork.artist_title %>
+          </td>
 
-        <td>
-          <%= a_bookmark.artwork.title %>
-        </td>
+          <td>
+            <img src ="<%= a_bookmark.artwork.image %>">
+          </td>
 
-        <td>
-          <%= a_bookmark.artwork.artist_title %>
-        </td>
+          <td>
+            <%= time_ago_in_words(a_bookmark.created_at) %> ago
+          </td>
 
-        <td>
-          <img src ="<%= a_bookmark.artwork.image %>">
-        </td>
-        
-        <td>
-          <%= time_ago_in_words(a_bookmark.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_bookmark.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/bookmarks/<%= a_bookmark.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
+          <td>
+            <form action = "/delete_bookmark/<%= a_bookmark.id %>">
+              <button>Remove</button>
+            </form>
+          </td>
+        </tr>
       <% end %>
     </table>
   </div>
