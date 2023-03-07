@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get("/", { :controller => "search", :action => "index" })
   get("/search", { :controller => "search", :action => "search_general" })
+  get("/search-again", { :controller => "search", :action => "search_again" })
   get("/search-last-view", { :controller => "search", :action => "last_view" })
   get("/search/:category/:search_term", { :controller => "search", :action => "search_category" })
 
