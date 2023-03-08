@@ -34,7 +34,7 @@ class Aic
     iiif_url = JSON.parse(raw_search_data)["config"]["iiif_url"]
     iiif_hash = { "iiif_url" => iiif_url }
 
-    results_count = parsed_search_data.count
+    results_count = parsed_search_data.count   
     rand_limit = results_count + 1
     random1 = rand(rand_limit)
     random2 = rand(rand_limit)
