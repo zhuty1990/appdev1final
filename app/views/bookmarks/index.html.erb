@@ -1,0 +1,44 @@
+<div>
+  <div>
+    <h1>
+      Your saved artworks
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-image table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Image</th>
+            <th scope="col">Artist</th>
+            <th scope="col">Saved on</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @list_of_bookmarks.each do |a_bookmark| %>
+            <tr>
+              <th scope="row" class ="align-middle"><%=a_bookmark.artwork.title%></th>
+              <td class="w-40 align-middle">
+                <a href="<%=a_bookmark.artwork.image%>" target="_blank"><img src=<%= a_bookmark.artwork.image %> class="img-fluid img-thumbnail"></a>
+              </td>
+              <td class ="align-middle"><%=a_bookmark.artwork.artist_title%></td>
+              <td class ="align-middle"><%= time_ago_in_words(a_bookmark.created_at) %> ago</td>
+              <td class ="align-middle">
+                <form action = "/delete_bookmark/<%= a_bookmark.id %>">
+                  <button type="button" class="btn btn-danger btn-sm">Remove</button>
+                </form>
+              </td>
+            </tr>
+          <%end%>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

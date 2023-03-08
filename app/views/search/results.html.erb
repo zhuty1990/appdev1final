@@ -1,0 +1,78 @@
+<%if @result_array == "There is nothing here ..."%>
+  <h2><%=@result_array%></h2>
+<%else%>
+  <div class="card text-center">
+    <div class="card-header">
+      Yipee!
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">You uncovered some great art!</h5>
+      <p class="card-text">
+        <a href="/search-again" class ="card-link">Dig deeper</a> or 
+        <form id="search" action="/search">
+          <label for="search_box">Search for something else</label>
+          <input type="text" id="search_box" name="search_input">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </p>
+    </div>
+    <div class="card-footer">
+      Click on any of the links below to search for that category | Save any work to add to your collection!
+    </div>
+  </div>
+
+  <hr>
+
+  <div class = "container">
+    <div class = "row">
+      <% @result_array.each do |artwork| %>
+        <div class = "col">
+          <div class="card text-center" style="width: 32rem;">
+            <a href = "<%=artwork.image%>" target = "_blank"><img class="card-img-top" src="<%=artwork.image%>" alt="<%=artwork.copyright_notice%>"></a>
+            <div class="card-body">
+              <h5 class="card-title"><%=artwork.title%></h5>
+              <h6 class="card-subtitle mb-2 text-muted"><a href="/search/artist/<%=artwork.artist%>"><%=artwork.artist%></a></h6>
+            </div>
+            <ul class="list-group list-group-flush pt-2 pb-2">
+              <li class="list-group-item pt-1 pb-1">Medium: <a href="/search/medium/<%=artwork.medium_id%>"><%=artwork.medium%></a></li>
+              <li class="list-group-item pt-1 pb-1">Style: <a href="/search/style/<%=artwork.style_id%>"><%=artwork.style%></a></li>
+              <li class="list-group-item pt-1 pb-1">Year: <a href="/search/year/<%=artwork.date_end%>"><%=artwork.date_display%></a></li>
+              <li class="list-group-item pt-1 pb-1">Place of origin: <a href="/search/place_of_origin/<%=artwork.place_of_origin%>"><%=artwork.place_of_origin%></a></li>
+            </ul>
+            <div class="card-body pt-2 pb-2">
+
+              <%if session[:user_id]%>
+                <%user=User.where({:id => session[:user_id]})[0]%>
+                <%if user.bookmarks.where({:aic_id => artwork.aic_id})[0].present?%>
+                  <div class="alert alert-success" role="alert">Saved</div>
+                <%else%>
+                  <form id="save" action="/insert_bookmark" method="post">
+                    <input type="hidden" name="artist" value="<%=artwork.artist%>">
+                    <input type="hidden" name="title" value="<%=artwork.title%>">
+                    <input type="hidden" name="image" value="<%=artwork.image%>">
+                    <input type="hidden" name="medium" value="<%=artwork.medium%>">
+                    <input type="hidden" name="medium_id" value="<%=artwork.medium_id%>">
+                    <input type="hidden" name="style" value="<%=artwork.style%>">
+                    <input type="hidden" name="style_id" value="<%=artwork.style_id%>">
+                    <input type="hidden" name="year" value="<%=artwork.date_display%>">
+                    <input type="hidden" name="place_of_origin" value="<%=artwork.place_of_origin%>">
+                    <input type="hidden" name="copyright_notice" value="<%=artwork.copyright_notice%>">
+                    <input type="hidden" name="aic_id" value="<%=artwork.aic_id%>">
+                    <button class="btn btn-primary">Save</button>
+                  </form>
+                  
+                <%end%>
+
+              <%else%>
+                <p><a href = "/user_sign_in" class="card-link">Sign in</a> or <a href = "/user_sign_up" class="card-link">Sign up</a> to save</p>
+              <%end%>
+
+            </div>
+
+          </div>
+        </div>
+      <%end%>
+    </div>
+  </div>
+
+<%end%>
