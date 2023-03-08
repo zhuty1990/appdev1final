@@ -16,45 +16,44 @@
   </head>
 
   <body>
-    <%if session[:user_id]%>
-      <ul>
-        <li>
-          <a href="/user_sign_out">
-            Sign out
-          </a>
-        </li>
-        <li>
-          <a href="/bookmarks">
-            My bookmarks
-          </a>
-        </li>
-        <li>
-          <a href="/">
-            Home
-          </a>
-        </li>
-      </ul>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand mb-0 h1" href="/">ArtHole</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <%else%>
-      <ul>
-        <li>
-          <a href="/user_sign_in">
-            Sign in
-          </a>
-        </li>
-        <li>
-          <a href="/user_sign_up">
-            Sign up
-          </a>
-        </li>
-        <li>
-          <a href="/">
-            Home
-          </a>
-        </li>
-      </ul>
-    <%end%>
-    <%= yield %>
-    <p>Data and images are sourced from the Art Institute of Chicago API.</p>
-  </body>
-</html>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <%if session[:user_id]%>
+            <li class="nav-item">
+              <a class="nav-link" a href="/bookmarks">Saved Artworks</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/user_sign_out">Sign Out</a>
+            </li>
+          <%else%>
+            <li class="nav-item">
+              <a class="nav-link" a href="/user_sign_in">Sign In</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/user_sign_up">Sign Up</a>
+            </li>
+          <%end%>
+
+
+        </div>
+      </nav>
+
+      <%= yield %>
+      <footer class="page-footer font-small blue pt-4">
+        <div class="footer-copyright text-center py-3" target="_blank">© 2022 Copyright: Tyler Zhu. Data and images are sourced from the <a href="https://www.artic.edu/open-access/public-api">Art Institute of Chicago public API</a>.
+        </div>
+        <!-- Copyright -->
+
+      </footer>
+
+    </body>
+  </html>

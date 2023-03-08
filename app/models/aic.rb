@@ -26,7 +26,7 @@ class Aic
   end
 
   def Aic.search(input)
-    search_term = input.to_s.strip.squeeze(" ").unicode_normalize(:nfkd).gsub(" ", "+").gsub(",", "+")
+    search_term = input.to_s.strip.squeeze(" ").unicode_normalize(:nfkd).gsub(" ", "+").gsub(",", "+").gsub("_", "+")
     results_limit = 40
     url = "https://api.artic.edu/api/v1/artworks/search?q=#{search_term}&limit=#{results_limit}&[term][is_public_domain]=true&fields=id,title,artist_title,style_title,style_id,place_of_origin,artwork_type_title,artwork_type_id,date_display,date_end,image_id,copyright_notice"
     raw_search_data = URI.open(url).read
@@ -62,7 +62,7 @@ class Aic
   end
 
   def Aic.category_search(category, input)
-    input = input.to_s.strip.squeeze(" ").gsub(" ", "+")
+    input = input.to_s.strip.squeeze(" ").gsub(" ", "+").gsub("_", "+")
     results_limit = 40
     url = "https://api.artic.edu/api/v1/artworks/search?query[term][#{category}]=#{input}&limit=#{results_limit}&[term][is_public_domain]=true&fields=id,title,artist_title,style_title,style_id,place_of_origin,artwork_type_title,artwork_type_id,date_display,date_end,image_id,copyright_notice"
     raw_search_data = URI.open(url).read
