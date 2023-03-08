@@ -34,121 +34,159 @@
   <div class="row align-items-center">
     <div class="col">
       <ul class="list-unstyled">
-        <li class="media mt-2 mb-2">
-          <img class="align-self-center mr-3" src=<%=image_url('monet.jpg')%> height = "128" width = "128">
-          <div class="media-body pagination-centered align-self-center">
-            <h6><a href = "/search/artist/claude_monet">Claude Monet</a></h6>
-          </div>
-        </li>
-        <li class="media mt-2 mb-2">
-          <img class="align-self-center mr-3" src=<%=image_url('warhol.jpg')%> height = "128" width = "128">
-          <div class="media-body pagination-centered align-self-center">
-            <h6><a href = "/search/artist/andy_warhol">Andy Warhol</a></h6>
-          </div>
-        </li>
-        <li class="media mt-2 mb-2">
-          <img class="align-self-center mr-3" src=<%=image_url('dali.jpeg')%> height = "128" width = "128">
-          <div class="media-body pagination-centered align-self-center">
-            <h6><a href = "/search/artist/salvador_dali">Salvador Dali</a></h6>
-          </div>
-        </li>
-        <li class="media mt-2 mb-2">
-          <img class="align-self-center mr-3" src=<%=image_url('kahlo.jpg')%> height = "128" width = "128">
-          <div class="media-body pagination-centered align-self-center">
-            <h6><a href = "/search/artist/frida_kahlo">Frida Kahlo</a></h6>
-          </div>
-        </li>
-        <li class="media mt-2 mb-2">
-          <img class="align-self-center mr-3" src=<%=image_url('basquiat.jpg')%> height = "128" width = "128">
-          <div class="media-body pagination-centered align-self-center">
-            <h6><a href = "/search/artist/basquiat">Jean-Michel Basquiat</a></h6>
-          </div>
-        </li>
-        <li class="media mt-2 mb-2">
-          <img class="align-self-center mr-3" src=<%=image_url('hesse.jpg')%> height = "128" width = "128">
-          <div class="media-body pagination-centered align-self-center">
-            <h6><a href = "/search/artist/eva_hesse">Eva Hesse</a></h6>
-          </div>
-        </li>
-      </div>
-      <div class="col">
-          <ul class="list-unstyled">
-        <li class="media mt-2 mb-2">
-          <img class="align-self-center mr-3" src=<%=image_url('impressionism.jpg')%> height = "128" width = "128">
-          <div class="media-body pagination-centered align-self-center">
-            <h6><a href = "/search/style/TM-7543">Impressionism</a></h6>
-          </div>
-        </li>
-        <li class="media mt-2 mb-2">
-          <img class="align-self-center mr-3" src=<%=image_url('minimalism.jpg')%> height = "128" width = "128">
-          <div class="media-body pagination-centered align-self-center">
-            <h6><a href = "/search/style/TM-7208">Minimalism</a></h6>
-          </div>
-        </li>
-        <li class="media mt-2 mb-2">
-          <img class="align-self-center mr-3" src=<%=image_url('realism.jpeg')%> height = "128" width = "128">
-          <div class="media-body pagination-centered align-self-center">
-            <h6><a href = "/search/style/TM-7548">Realism</a></h6>
-          </div>
-        </li>
-        <li class="media mt-2 mb-2">
-          <img class="align-self-center mr-3" src=<%=image_url('expressionism.jpeg')%> height = "128" width = "128">
-          <div class="media-body pagination-centered align-self-center">
-            <h6><a href = "/search/style/TM-5979">Expressionism</a></h6>
-          </div>
-        </li>
-        <li class="media mt-2 mb-2">
-          <img class="align-self-center mr-3" src=<%=image_url('surrealism.png')%> height = "128" width = "128">
-          <div class="media-body pagination-centered align-self-center">
-            <h6><a href = "/search/style/TM-7551">Surrealism</a></h6>
-          </div>
-        </li>
-        <li class="media mt-2 mb-2">
-          <img class="align-self-center mr-3" src=<%=image_url('popart.jpg')%> height = "128" width = "128">
-          <div class="media-body pagination-centered align-self-center">
-            <h6><a href = "/search/style/TM-7221">Pop Art</a></h6>
-          </div>
-        </li>
-      </div>
-      <div class="col">
-         <ul class="list-unstyled">
-        <li class="media mt-2 mb-2">
-          <img class="align-self-center mr-3" src=<%=image_url('painting.jpg')%> height = "128" width = "128">
-          <div class="media-body pagination-centered align-self-center">
-            <h6><a href = "/search/medium/<%=@medium_hash["painting"]%>">Painting</a></h6>
-          </div>
-        </li>
-        <li class="media mt-2 mb-2">
-          <img class="align-self-center mr-3" src=<%=image_url('sculpture.jpg')%> height = "128" width = "128">
-          <div class="media-body pagination-centered align-self-center">
-            <h6><a href = "/search/medium/<%=@medium_hash["sculpture"]%>">Sculpture</a></h6>
-          </div>
-        </li>
-        <li class="media mt-2 mb-2">
-          <img class="align-self-center mr-3" src=<%=image_url('photograph.jpg')%> height = "128" width = "128">
-          <div class="media-body pagination-centered align-self-center">
-            <h6><a href = "/search/medium/<%=@medium_hash["photograph"]%>">Photograph</a></h6>
-          </div>
-        </li>
-        <li class="media mt-2 mb-2">
-          <img class="align-self-center mr-3" src=<%=image_url('print.jpg')%> height = "128" width = "128">
-          <div class="media-body pagination-centered align-self-center">
-            <h6><a href = "/search/medium/<%=@medium_hash["print"]%>">Print</a></h6>
-          </div>
-        </li>
-        <li class="media mt-2 mb-2">
-          <img class="align-self-center mr-3" src=<%=image_url('graphicdesign.jpg')%> height = "128" width = "128">
-          <div class="media-body pagination-centered align-self-center">
-            <h6><a href = "/search/medium/<%=@medium_hash["graphic design"]%>">Graphic Design</a></h6>
-          </div>
-        </li>
-        <li class="media mt-2 mb-2">
-          <img class="align-self-center mr-3" src=<%=image_url('drawing.jpg')%> height = "128" width = "128">
-          <div class="media-body pagination-centered align-self-center">
-            <h6><a href = "/search/medium/<%=@medium_hash["drawing and watercolor"]%>">Drawing and Watercolor</a></h6>
-          </div>
-        </li>
-      </div>
-    </div>
+        <a href = "/search/artist/claude_monet">
+          <li class="media mt-2 mb-2">
+            <img class="align-self-center mr-3" src=<%=image_url('monet.jpg')%> height = "128" width = "128">
+            <div class="media-body pagination-centered align-self-center">
+              <h6>Claude Monet</h6>
+            </div>
+          </li>
+        </a>
+        <a href = "/search/artist/andy_warhol">
+          <li class="media mt-2 mb-2">
+            <img class="align-self-center mr-3" src=<%=image_url('warhol.jpg')%> height = "128" width = "128">
+            <div class="media-body pagination-centered align-self-center">
+              <h6>Andy Warhol</h6>
+            </div>
+          </li>
+        </a>
+        <a href = "/search/artist/salvador_dali">
+          <li class="media mt-2 mb-2">
+            <img class="align-self-center mr-3" src=<%=image_url('dali.jpeg')%> height = "128" width = "128">
+            <div class="media-body pagination-centered align-self-center">
+              <h6>Salvador Dali</h6>
+            </div>
+          </li>
+        </a>
+        <a href = "/search/artist/cindy_sherman">
+          <li class="media mt-2 mb-2">
+            <img class="align-self-center mr-3" src=<%=image_url('sherman.jpg')%> height = "128" width = "128">
+            <div class="media-body pagination-centered align-self-center">
+              <h6>Cindy Sherman</h6>
+            </div>
+          </li>
+        </a>
 
-  </div>
+        <a href = "/search/artist/basquiat">
+          <li class="media mt-2 mb-2">
+            <img class="align-self-center mr-3" src=<%=image_url('basquiat.jpg')%> height = "128" width = "128">
+            <div class="media-body pagination-centered align-self-center">
+              <h6>Jean-Michel Basquiat</h6>
+            </div>
+          </li>
+        </a>
+
+        <a href = "/search/artist/eva_hesse">
+          <li class="media mt-2 mb-2">
+            <img class="align-self-center mr-3" src=<%=image_url('hesse.jpg')%> height = "128" width = "128">
+            <div class="media-body pagination-centered align-self-center">
+              <h6>Eva Hesse</h6>
+            </div>
+          </li>
+        </a>
+      </div>
+      <div class="col">
+        <ul class="list-unstyled">
+          <a href = "/search/style/TM-7543">
+            <li class="media mt-2 mb-2">
+              <img class="align-self-center mr-3" src=<%=image_url('impressionism.jpg')%> height = "128" width = "128">
+              <div class="media-body pagination-centered align-self-center">
+                <h6>Impressionism</h6>
+              </div>
+            </li>
+          </a>
+          <a href = "/search/style/TM-7208">
+            <li class="media mt-2 mb-2">
+              <img class="align-self-center mr-3" src=<%=image_url('minimalism.jpg')%> height = "128" width = "128">
+              <div class="media-body pagination-centered align-self-center">
+                <h6>Minimalism</h6>
+              </div>
+            </li>
+          </a>
+          <a href = "/search/style/TM-7548">
+            <li class="media mt-2 mb-2">
+              <img class="align-self-center mr-3" src=<%=image_url('realism.jpeg')%> height = "128" width = "128">
+              <div class="media-body pagination-centered align-self-center">
+                <h6>Realism</h6>
+              </div>
+            </li>
+          </a>
+          <a href = "/search/style/TM-5979">
+            <li class="media mt-2 mb-2">
+              <img class="align-self-center mr-3" src=<%=image_url('expressionism.jpeg')%> height = "128" width = "128">
+              <div class="media-body pagination-centered align-self-center">
+                <h6>Expressionism</h6>
+              </div>
+            </li>
+          </a>
+          <a href = "/search/style/TM-7551">
+            <li class="media mt-2 mb-2">
+              <img class="align-self-center mr-3" src=<%=image_url('surrealism.png')%> height = "128" width = "128">
+              <div class="media-body pagination-centered align-self-center">
+                <h6>Surrealism</h6>
+              </div>
+            </li>
+          </a>
+          <a href = "/search/style/TM-7221">
+            <li class="media mt-2 mb-2">
+              <img class="align-self-center mr-3" src=<%=image_url('popart.jpg')%> height = "128" width = "128">
+              <div class="media-body pagination-centered align-self-center">
+                <h6>Pop Art</h6>
+              </div>
+            </li>
+          </a>
+        </div>
+        <div class="col">
+          <ul class="list-unstyled">
+            <a href = "/search/medium/<%=@medium_hash["painting"]%>">
+              <li class="media mt-2 mb-2">
+                <img class="align-self-center mr-3" src=<%=image_url('painting.jpg')%> height = "128" width = "128">
+                <div class="media-body pagination-centered align-self-center">
+                  <h6>Painting</h6>
+                </div>
+              </li>
+            </a>
+            <a href = "/search/medium/<%=@medium_hash["sculpture"]%>">
+              <li class="media mt-2 mb-2">
+                <img class="align-self-center mr-3" src=<%=image_url('sculpture.jpg')%> height = "128" width = "128">
+                <div class="media-body pagination-centered align-self-center">
+                  <h6>Sculpture</h6>
+                </div>
+              </li>
+            </a>
+            <a href = "/search/medium/<%=@medium_hash["photograph"]%>">
+              <li class="media mt-2 mb-2">
+                <img class="align-self-center mr-3" src=<%=image_url('photograph.jpg')%> height = "128" width = "128">
+                <div class="media-body pagination-centered align-self-center">
+                  <h6>Photograph</h6>
+                </div>
+              </li>
+            </a>
+            <a href = "/search/medium/<%=@medium_hash["print"]%>">
+              <li class="media mt-2 mb-2">
+                <img class="align-self-center mr-3" src=<%=image_url('print.jpg')%> height = "128" width = "128">
+                <div class="media-body pagination-centered align-self-center">
+                  <h6>Print</h6>
+                </div>
+              </li>
+            </a>
+            <a href = "/search/medium/<%=@medium_hash["graphic design"]%>">
+              <li class="media mt-2 mb-2">
+                <img class="align-self-center mr-3" src=<%=image_url('graphicdesign.jpg')%> height = "128" width = "128">
+                <div class="media-body pagination-centered align-self-center">
+                  <h6>Graphic Design</h6>
+                </div>
+              </li>
+            </a>
+            <a href = "/search/medium/<%=@medium_hash["drawing and watercolor"]%>">
+              <li class="media mt-2 mb-2">
+                <img class="align-self-center mr-3" src=<%=image_url('drawing.jpg')%> height = "128" width = "128">
+                <div class="media-body pagination-centered align-self-center">
+                  <h6>Drawing and Watercolor</h6>
+                </div>
+              </li>
+            </a>
+          </div>
+        </div>
+
+      </div>

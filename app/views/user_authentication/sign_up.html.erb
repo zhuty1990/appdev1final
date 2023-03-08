@@ -1,41 +1,51 @@
-<h1>Sign up</h1>
+<div class="mask d-flex align-items-center h-100 gradient-custom-3">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+        <div class="card" style="border-radius: 15px;">
+          <div class="card-body p-5">
+            <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-<form action="/insert_user" method="post">
+            <form action="/insert_user" method="post">
 
-  <div>
-    <label for="email_box">Email</label>
-    <input id="email_box" name="query_email" placeholder="Choose a email..." type="text">
+              <div class="form-outline mb-4">
+                <input type="text" id="firstname" class="form-control form-control-lg" name="query_first_name" />
+                <label class="form-label" for="firstname">First Name</label>
+              </div>
+
+              <div class="form-outline mb-4">
+                <input type="text" id="lastname" class="form-control form-control-lg" name="query_last_name" />
+                <label class="form-label" for="lastname">Last Name</label>
+              </div>
+
+              <div class="form-outline mb-4">
+                <input type="email" id="email" class="form-control form-control-lg" name="query_email" />
+                <label class="form-label" for="email">Your Email</label>
+              </div>
+
+              <div class="form-outline mb-4">
+                <input type="password" id="password" class="form-control form-control-lg" name="query_password"/>
+                <label class="form-label" for="password">Password</label>
+              </div>
+
+              <div class="form-outline mb-4">
+                <input type="password" id="confirm_password" class="form-control form-control-lg" name="query_password_confirmation" />
+                <label class="form-label" for="confirm_password">Repeat your password</label>
+              </div>
+
+              <div class="d-flex justify-content-center">
+                <button type="submit"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+              </div>
+
+              <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="/user_sign_in"
+                    class="fw-bold text-body"><u>Login here</u></a></p>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-                 
-  <div>
-    <label for="first_name_box">First name</label>
-      
-    <input type="text" id="first_name_box" name="query_first_name">
-  </div>
-         
-  <div>
-    <label for="last_name_box">Last name</label>
-      
-    <input type="text" id="last_name_box" name="query_last_name">
-  </div>
-    
-  <div>
-    <label for="password_box">Password</label>
-    <input id="password_box" name="query_password" placeholder="Choose a password..." type="password">
-  </div>
-
-  <div>
-    <label for="password_confirmation_box">Password Confirmation</label>
-    <input id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your password..." type="password">
-  </div>
-
-  <button>
-    Sign up
-  </button>
-</form>
-
-<hr>
-
-<p>
-  Or, <a href="/user_sign_in">Sign in</a> instead.
-</p>
+</div>
