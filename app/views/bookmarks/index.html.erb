@@ -32,7 +32,7 @@
               <td class ="align-middle"><%= time_ago_in_words(a_bookmark.created_at) %> ago</td>
               <td class ="align-middle">
                 <form action = "/delete_bookmark/<%= a_bookmark.id %>">
-                  <button type="button" class="btn btn-danger btn-sm">Remove</button>
+                  <button type="submit" class="btn btn-danger btn-sm">Remove</button>
                 </form>
               </td>
             </tr>
